@@ -1250,7 +1250,7 @@ def calculate_status(last_keep_alive, pending, today=datetime.utcnow()):
         return "disconnected" if difference > common.limit_seconds else ("pending" if pending else "active")
 
 
-def send_restart_command(agent_id: str = '', agent_version: str = '', wq : WazuhQueue = None) -> str:
+def send_restart_command(agent_id: str = '', agent_version: str = '', wq: WazuhQueue = None) -> str:
     """Send restart command to an agent.
 
     Parameters
