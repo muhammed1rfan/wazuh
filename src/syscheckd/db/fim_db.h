@@ -421,4 +421,13 @@ int fim_db_read_line_from_file(fim_tmp_file *file, int storage, int it, char **b
  */
 int fim_db_get_count_entries(fdb_t * fim_sql);
 
+/**
+ * @brief Check if the FIM DB is full.
+ *
+ * @param fim_sql FIM database struct.
+ * @retval 0 if the DB is not full.
+ * @retval 1 if the DB is full.
+ */
+int fim_db_is_full(fdb_t *fim_sql);
+
 #endif /* FIM_DB_COMMON_H */
