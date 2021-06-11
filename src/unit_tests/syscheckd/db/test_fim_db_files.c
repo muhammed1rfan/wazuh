@@ -907,7 +907,7 @@ void test_fim_db_get_paths_from_inode_multiple_path(void **state) {
 
 #endif
 
-/*----------fim_db_get_count_file_data()------------------*/
+/*----------fim_db_get_count_file_inode()------------------*/
 void test_fim_db_get_count_file_data(void **state) {
     test_fim_db_insert_data *test_data = *state;
 
@@ -919,7 +919,7 @@ void test_fim_db_get_count_file_data(void **state) {
     expect_value(__wrap_sqlite3_column_int, iCol, 0);
     will_return(__wrap_sqlite3_column_int, 1);
 
-    int ret = fim_db_get_count_file_data(test_data->fim_sql);
+    int ret = fim_db_get_count_file_inode(test_data->fim_sql);
 
     assert_int_equal(ret, 1);
 }
@@ -935,7 +935,7 @@ void test_fim_db_get_count_file_data_error(void **state) {
     will_return(__wrap_sqlite3_errmsg, "ERROR MESSAGE");
     expect_string(__wrap__merror, formatted_msg, "Step error getting count entry data: ERROR MESSAGE");
 
-    int ret = fim_db_get_count_file_data(test_data->fim_sql);
+    int ret = fim_db_get_count_file_inode(test_data->fim_sql);
 
     assert_int_equal(ret, -1);
 }
@@ -1432,7 +1432,7 @@ int main(void) {
         cmocka_unit_test_setup(test_fim_db_get_paths_from_inode_single_path, test_fim_db_setup),
         cmocka_unit_test_setup(test_fim_db_get_paths_from_inode_multiple_path, test_fim_db_setup),
 #endif
-        // fim_db_get_count_file_data
+        // fim_db_get_count_file_inode
         cmocka_unit_test_setup_teardown(test_fim_db_get_count_file_data, test_fim_db_setup, test_fim_db_teardown),
         cmocka_unit_test_setup_teardown(test_fim_db_get_count_file_data_error, test_fim_db_setup, test_fim_db_teardown),
         // fim_db_get_count_file_entry
